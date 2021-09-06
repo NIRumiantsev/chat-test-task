@@ -1,11 +1,22 @@
-import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from 'axios';
+
+const accessToken = process.env.API_TOKEN;
 
 class ApiService {
   private apiService: AxiosInstance;
 
   constructor() {
-    this.apiService = axios.create();
+    this.apiService = axios.create(this.createAxiosConfig());
     this.apiService.interceptors.response.use(this.handleSuccess, this.handleError);
+  }
+
+  private createAxiosConfig(): AxiosRequestConfig {
+    return {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+    };
   }
 
   // eslint-disable-next-line

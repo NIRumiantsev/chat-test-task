@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from 'axios';
 
-const accessToken = process.env.API_TOKEN;
+const accessToken = process.env.REACT_APP_API_TOKEN;
 
 class ApiService {
   private apiService: AxiosInstance;

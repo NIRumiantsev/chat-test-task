@@ -1,4 +1,4 @@
-const BASE_URL = process.env.BASE_URL;
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const CONVERSATION_LIST_URL = (userId: string) =>
   `${BASE_URL}/user/${userId}/conversation`;

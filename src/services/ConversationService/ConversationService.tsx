@@ -1,6 +1,6 @@
 import { BaseService, ServiceLocator } from 'services';
 import { ConversationStore } from 'stores';
-import { ConversationDTO } from 'types';
+import { ConversationCreateDTO, ConversationDTO } from 'types';
 import {
   CONVERSATION_URL,
   CONVERSATION_LIST_URL,
@@ -14,13 +14,25 @@ export class ConversationService extends BaseService {
     this.store = coursesStore;
   }
 
-  async loadConversationList(userId: string) {
-    const { data }: { data: ConversationDTO[] } = await this.api.get(CONVERSATION_LIST_URL(userId));
+  async loadConversationList(userId: string | number) {
+    const { data }: { data: ConversationDTO[] } = await this.api.get(
+      CONVERSATION_LIST_URL(userId.toString())
+    );
     this.store.conversationList = data;
   }
 
-  async loadConversation(userId: string, conversationId: string) {
-    const { data }: { data: ConversationDTO } = await this.api.get(CONVERSATION_URL(userId, conversationId));
+  async loadConversation(userId: string | number, conversationId: string | number) {
+    const { data }: { data: ConversationDTO } = await this.api.get(
+      CONVERSATION_URL(userId.toString(), conversationId.toString())
+    );
     this.store.currentConversation = data;
   }
+
+  async createNewConversation(userId: string | number, conversationData: ConversationCreateDTO) {
+    const { data }: { data: ConversationDTO } = await this.api.post(
+      CONVERSATION_LIST_URL(userId.toString()), conversationData
+    );
+    this.store.currentConversation = data;
+  }
+
 }

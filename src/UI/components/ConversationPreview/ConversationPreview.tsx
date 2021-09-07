@@ -1,6 +1,18 @@
-const ConversationPreview = () => {
+type ConversationPreviewType = {
+  conversationName: string,
+  onClick: () => void,
+}
+
+const ConversationPreview = (props: ConversationPreviewType) => {
+  const {
+    conversationName,
+    onClick
+  } = props;
+
   return (
-    <div></div>
+    <div onClick={onClick}>
+      {conversationName}
+    </div>
   );
 };
 

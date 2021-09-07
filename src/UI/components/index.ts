@@ -5,6 +5,7 @@ import { Modal } from './Modal/Modal';
 import { ProfilePreview } from './ProfilePreview/ProfilePreview';
 import { SearchField } from './SearchField/SearchField';
 import { Input } from './Input/Input';
+import { CheckBox } from './CheckBox/CheckBox';
 
 export {
   Button,
@@ -14,4 +15,5 @@ export {
   ProfilePreview,
   SearchField,
   Input,
+  CheckBox,
 };

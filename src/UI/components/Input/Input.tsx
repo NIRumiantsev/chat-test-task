@@ -2,15 +2,15 @@ import { ChangeEvent } from 'react';
 
 type TextareaProps = {
   type: "text" | "number" | "textarea",
-  name: string,
   value: string,
   onChange: (name:string, value: string) => void;
+  name?: string,
 }
 
 const Input = (props: TextareaProps) => {
   const {
     type,
-    name,
+    name = '',
     value,
     onChange,
   } = props;

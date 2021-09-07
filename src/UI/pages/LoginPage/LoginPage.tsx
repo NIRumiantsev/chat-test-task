@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { LoginForm } from 'UI';
 import { serviceLocator } from 'services';
 
-const MessengerPage = () => {
+const LoginPage = () => {
   const history = useHistory();
 
   useEffect(() => {
@@ -13,16 +14,16 @@ const MessengerPage = () => {
     const userId = serviceLocator.userService.checkUserLogin();
     if (userId) {
       await serviceLocator.userService.loadLoginUser(userId);
-    } else {
-      history.push('/login');
+      history.push('/');
     }
   };
 
   return (
     <div>
-      Messenger
+      Login
+      <LoginForm/>
     </div>
   )
 };
 
-export { MessengerPage };
+export { LoginPage };

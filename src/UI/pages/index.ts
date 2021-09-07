@@ -1,7 +1,7 @@
-import { ChatPage } from './ChatPage/ChatPage';
+import { LoginPage } from './LoginPage/LoginPage';
 import { MessengerPage } from './MessengerPage/MessengerPage';
 
 export {
-  ChatPage,
+  LoginPage,
   MessengerPage,
 };

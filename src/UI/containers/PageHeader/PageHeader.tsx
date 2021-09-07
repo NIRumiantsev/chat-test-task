@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { serviceLocator } from 'services';
+import {serviceLocator} from "../../../services";
 
-const MessengerPage = () => {
+const PageHeader = () => {
   const history = useHistory();
 
   useEffect(() => {
@@ -20,9 +20,9 @@ const MessengerPage = () => {
 
   return (
     <div>
-      Messenger
+      Header
     </div>
   )
 };
 
-export { MessengerPage };
+export { PageHeader };

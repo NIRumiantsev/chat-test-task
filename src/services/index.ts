@@ -3,3 +3,4 @@ export * from './BaseService';
 export * from './UserService/UserService';
 export * from './ConversationService/ConversationService';
 export * from './ServiceLocator';
+export * from './LocalStorageService';

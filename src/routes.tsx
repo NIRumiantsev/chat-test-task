@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Route } from 'react-router-dom'
-import { ChatPage, MessengerPage } from 'UI';
+import { MessengerPage, LoginPage } from 'UI';
 
 type RouteItem = {
   path: string,
@@ -9,12 +9,12 @@ type RouteItem = {
 
 const routes: RouteItem[] = [
   {
-    path: '/messenger',
+    path: '/',
     component: MessengerPage,
   },
   {
-    path: '/chat/:id?',
-    component: ChatPage,
+    path: '/login',
+    component: LoginPage,
   },
 ];
 

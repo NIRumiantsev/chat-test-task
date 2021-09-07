@@ -5,6 +5,7 @@ import {
 
 class UserStore {
   userList: UserDTO[] = [];
+  currentLoginUser: UserDTO | null = null;
   currentUser: UserDTO | null = null;
 
   constructor() {

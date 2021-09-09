@@ -1,0 +1,16 @@
+.MessengerPage {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 45px;
+  &_column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: calc(100% - 330px);
+  }
+  & .Input {
+    margin-bottom: 20px;
+  }
+}

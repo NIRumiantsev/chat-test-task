@@ -1,22 +1,27 @@
 import {ReactComponentElement, useEffect, useState} from 'react';
 import { useHistory } from 'react-router-dom';
+import { observer } from 'mobx-react';
 import { serviceLocator } from 'services';
-import { conversationStore } from 'stores';
+import { conversationStore, userStore } from 'stores';
 import { ConversationsWidget, Modal, MessengerHeader, ChatWidget } from 'UI';
 import { StartConversationTemplate, StartGroupChatTemplate } from './subcomponents';
 
+import './MessengerPage.scss';
+
+type ModalTemplate = {
+  title: string,
+  content: ReactComponentElement<'div'> | string
+};
+
 type ModalTemplates = {
-  [key: string]: ReactComponentElement<'div'> | string
+  [key: string]: ModalTemplate,
 };
 
-const modalTemplates: ModalTemplates = {
-  startConversation: <StartConversationTemplate/>,
-  startGroupChat: <StartGroupChatTemplate/>,
-};
-
-const MessengerPage = () => {
+const MessengerPage = observer((): ReactComponentElement<'div'> => {
   const [modalOpen, setOpenModal] = useState<boolean>(false);
   const [modalTemplateName, setModalTemplateName] = useState<string>('');
+
+  const currentUser = userStore.currentLoginUser;
 
   const history = useHistory();
 
@@ -46,25 +51,45 @@ const MessengerPage = () => {
   const onModalClose = () => {
     setOpenModal(false);
     setModalTemplateName('');
-  }
+  };
+
+  const onConversationModalClose = async () => {
+    if (currentUser) {
+      await serviceLocator.conversationService.loadConversationList(currentUser.id);
+      onModalClose();
+    }
+  };
+
+  const modalTemplates: ModalTemplates = {
+    startConversation: {
+      title: "Create a dialogue",
+      content: <StartConversationTemplate onModalClose={onConversationModalClose}/>
+    },
+    startGroupChat: {
+      title: "Create group chat",
+      content: <StartGroupChatTemplate onModalClose={onConversationModalClose}/>,
+    }
+  };
 
   return (
-    <div>
-      Messenger
+    <div className="MessengerPage">
       <ConversationsWidget/>
-      <MessengerHeader
-        onStartConversation={() => onModalOpen('startConversation')}
-        onStartGroupChart={() => onModalOpen('startGroupChat')}
-      />
-      <ChatWidget/>
+      <div className="MessengerPage_column">
+        <MessengerHeader
+          onStartConversation={() => onModalOpen('startConversation')}
+          onStartGroupChart={() => onModalOpen('startGroupChat')}
+        />
+        <ChatWidget/>
+      </div>
       {modalOpen && (
         <Modal
-          content={modalTemplates[modalTemplateName]}
+          title={modalTemplates[modalTemplateName].title}
+          content={modalTemplates[modalTemplateName].content}
           onClose={onModalClose}
         />
       )}
     </div>
   )
-};
+});
 
 export { MessengerPage };

@@ -1,0 +1,32 @@
+.UserItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  &:not(nth-last-child) {
+    border-bottom: 1px solid #C0BBDB;
+  }
+  &_holder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &_name {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #171325;
+    text-transform: capitalize;
+    margin-left: 15px;
+  }
+  &_start {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #3E2FED;
+    cursor: pointer;
+    &:hover {
+      color: #3b2ec4;
+    }
+  }
+}

@@ -1,7 +1,9 @@
-import { StartConversationTemplate } from './StartConversationTemplate';
-import { StartGroupChatTemplate } from './StartGroupChatTemplate';
+import { StartConversationTemplate } from './templates/StartConversationTemplate';
+import { StartGroupChatTemplate } from './templates/StartGroupChatTemplate';
+import { UserItem } from './UserItem/UserItem';
 
 export {
   StartConversationTemplate,
   StartGroupChatTemplate,
+  UserItem,
 };

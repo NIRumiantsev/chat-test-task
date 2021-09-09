@@ -37,6 +37,10 @@ export class UserService extends BaseService {
     return this.localStorage.getItem('userId');
   }
 
+  logOut() {
+    this.localStorage.clearLocalStorage();
+  }
+
   async loadLoginUser(userId: string) {
     const { data }: { data: UserDTO } = await this.api.get(USER_URL(userId));
     this.store.currentLoginUser = data;

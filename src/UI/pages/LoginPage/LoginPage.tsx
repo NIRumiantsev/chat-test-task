@@ -1,9 +1,11 @@
-import { useEffect } from 'react';
+import { ReactComponentElement, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { LoginForm } from 'UI';
 import { serviceLocator } from 'services';
 
-const LoginPage = () => {
+import './LoginPage.scss';
+
+const LoginPage = ():ReactComponentElement<'div'> => {
   const history = useHistory();
 
   useEffect(() => {
@@ -19,8 +21,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
-      Login
+    <div className="LoginPage">
       <LoginForm/>
     </div>
   )

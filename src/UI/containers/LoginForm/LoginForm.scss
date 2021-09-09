@@ -1,0 +1,27 @@
+.LoginForm {
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 100px rgba(167, 170, 240, 0.15);
+  backdrop-filter: blur(4px);
+  border-radius: 15px;
+  width: 435px;
+  height: 340px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  &_title {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #171325;
+    margin: 0;
+  }
+  &_subtitle {
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 23px;
+    color: #A6A1B6;
+    margin: 0;
+  }
+}

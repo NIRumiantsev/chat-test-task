@@ -1,0 +1,19 @@
+.ConversationsWidget {
+  width: 285px;
+  &_snackbar {
+    padding: 35px 25px;
+    text-align: center;
+    background: #F6F6F8;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    color: #807996;
+    margin-top: 30px;
+  }
+  &_container {
+    margin-top: 30px;
+    max-height: calc(100vh - 150px);
+    overflow-y: auto;
+  }
+}

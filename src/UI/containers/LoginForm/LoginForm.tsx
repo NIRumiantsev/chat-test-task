@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom';
 import { Input, Button } from 'UI';
 import { serviceLocator } from 'services';
 
+import './LoginForm.scss';
+
 type FormState = {
   login: string,
   password: string,
@@ -36,12 +38,18 @@ const LoginForm = () => {
   };
 
   return (
-    <form>
+    <form className="LoginForm">
+      <div>
+        <h2 className="LoginForm_title">Wellcome back to our messanger</h2>
+        <h3 className="LoginForm_subtitle">Sign in</h3>
+      </div>
       {
         formFields.map((fieldName: keyof FormState) => (
           <Input
             key={`login-form-field-${fieldName}`}
             type="text"
+            title={fieldName}
+            placeholder={`Enter your ${fieldName}`}
             name={fieldName}
             value={formState[fieldName]}
             onChange={(name: string, value: string) => handleFormUpdate(name, value)}

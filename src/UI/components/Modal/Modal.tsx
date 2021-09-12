@@ -28,9 +28,10 @@ const Modal = (props: ModalProps): ReactComponentElement<'div'> => {
           <div className="Modal_holder">
             <h2 className="Modal_title">{title}</h2>
             <Button
-              content={<img src={CloseIcon} alt="close"/>}
               type="system"
               width="45px"
+              withIcon={true}
+              icon={CloseIcon}
               onClick={onClose}
             />
           </div>

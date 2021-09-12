@@ -3,5 +3,8 @@
   &_container {
     width: 1080px;
     margin: 0 auto;
+    @media screen and (max-width: 1080px) {
+      width: 100%;
+    }
   }
 }

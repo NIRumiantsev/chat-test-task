@@ -37,6 +37,7 @@ const MessengerPage = observer((): ReactComponentElement<'div'> => {
       const firstConversation = conversationStore.conversationList[0];
       if (firstConversation) {
         await serviceLocator.conversationService.loadConversation(userId, firstConversation?.id);
+        await serviceLocator.conversationService.loadMessages(userId, firstConversation?.id);
       }
     } else {
       history.push('/login');

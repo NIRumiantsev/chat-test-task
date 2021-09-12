@@ -9,6 +9,13 @@
     align-items: center;
     justify-content: space-between;
     width: calc(100% - 330px);
+    @media screen and (max-width: 1080px) {
+      width: 100%;
+      padding: 0 20px;
+    }
+    @media screen and (max-width: 500px) {
+      padding: 0 5px;
+    }
   }
   & .Input {
     margin-bottom: 20px;

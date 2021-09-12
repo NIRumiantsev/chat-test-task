@@ -1,4 +1,5 @@
 import {ReactComponentElement, useEffect, useState} from 'react';
+import { toJS } from 'mobx';
 import { observer } from 'mobx-react';
 import { userStore, conversationStore } from 'stores';
 import { ConversationCreateDTO, ConversationDTO, UserDTO } from 'types';
@@ -32,7 +33,7 @@ const StartConversationTemplate = observer((props: StartConversationProps): Reac
     if (!currentUser) {
       return;
     }
-    const conversationList = conversationStore.conversationList;
+    const conversationList = toJS(conversationStore).conversationList;
     const existingConversation = conversationList.find((conversation: ConversationDTO) => {
       const { members } = conversation;
       const isPrivate = members.length === 2; //Check if conversation is one-to-one

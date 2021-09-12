@@ -11,6 +11,7 @@ type TextareaProps = {
   withIcon?: boolean,
   icon?: string,
   title?: string,
+  withoutBorder?: boolean
 };
 
 const Input = (props: TextareaProps): ReactComponentElement<'div'> => {
@@ -23,6 +24,7 @@ const Input = (props: TextareaProps): ReactComponentElement<'div'> => {
     withIcon = false,
     icon = '',
     title = '',
+    withoutBorder = false,
   } = props;
 
   return (
@@ -39,6 +41,7 @@ const Input = (props: TextareaProps): ReactComponentElement<'div'> => {
       )}
       <input
         className={`Input_field${withIcon ? '--withIcon' : ''}`}
+        style={withoutBorder ? {border: 'none'} : {}}
         type={type}
         value={value}
         placeholder={placeholder}

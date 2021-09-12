@@ -1,11 +1,13 @@
 import { makeAutoObservable } from 'mobx';
 import {
-  ConversationDTO
+  ConversationDTO,
+  MessageDTO
 } from 'types';
 
 class ConversationStore {
   conversationList: ConversationDTO[] = [];
   currentConversation: ConversationDTO | null = null;
+  currentMessages: MessageDTO[] = [];
 
   constructor() {
     makeAutoObservable(this);

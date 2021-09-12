@@ -3,10 +3,14 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  margin-bottom: 25px;
   &_holder {
     width: 380px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media screen and (max-width: 500px) {
+      width: 100px;
+    }
   }
 }

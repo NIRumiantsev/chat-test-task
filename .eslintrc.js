@@ -23,5 +23,6 @@ module.exports = {
     "rules": {
         "react/react-in-jsx-scope": "off",
         "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/ban-ts-comment": "off"
     }
 };

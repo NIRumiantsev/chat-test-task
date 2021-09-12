@@ -1,9 +1,10 @@
 import { BaseService, ServiceLocator } from 'services';
 import { ConversationStore } from 'stores';
-import { ConversationCreateDTO, ConversationDTO } from 'types';
+import {ConversationCreateDTO, ConversationDTO, MessageCreateDTO, MessageDTO} from 'types';
 import {
   CONVERSATION_URL,
   CONVERSATION_LIST_URL,
+  MESSAGE_URL,
 } from './urls';
 
 export class ConversationService extends BaseService {
@@ -35,4 +36,15 @@ export class ConversationService extends BaseService {
     this.store.currentConversation = data;
   }
 
+  async createNewMessage(userId: string | number, conversationId: string | number, message: string) {
+    const newMessage: MessageCreateDTO = { text: message };
+    await this.api.post(MESSAGE_URL(userId.toString(), conversationId.toString()), newMessage);
+  }
+
+  async loadMessages(userId: string | number, conversationId: string | number) {
+    const { data }: { data: MessageDTO[] } = await this.api.get(
+      MESSAGE_URL(userId.toString(), conversationId.toString())
+    );
+    this.store.currentMessages = data;
+  }
 }

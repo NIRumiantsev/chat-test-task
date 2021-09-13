@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import {ReactComponentElement, useEffect} from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,7 +9,7 @@ import { serviceLocator } from './services';
 
 import './App.scss';
 
-const App = () => {
+const App = (): ReactComponentElement<'div'> => {
   useEffect(() => {
     loadUsersList();
   }, []);

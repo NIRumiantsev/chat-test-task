@@ -29,7 +29,7 @@ const StartConversationTemplate = observer((props: StartConversationProps): Reac
     setUserList(filterUsers(searchingText));
   }, [searchingText]);
 
-  const handleUserClick = (userId: number) => {
+  const handleUserClick = async (userId: number) => {
     if (!currentUser) {
       return;
     }
@@ -46,9 +46,10 @@ const StartConversationTemplate = observer((props: StartConversationProps): Reac
       const newConversationData: ConversationCreateDTO = {
         user_ids: [userId],
       };
-      serviceLocator.conversationService.createNewConversation(currentUser?.id, newConversationData);
+      await serviceLocator.conversationService.createNewConversation(currentUser?.id, newConversationData);
+      await serviceLocator.conversationService.loadConversationList(currentUser?.id);
     } else {
-      serviceLocator.conversationService.loadConversation(currentUser?.id, existingConversation.id);
+      await serviceLocator.conversationService.loadConversation(currentUser?.id, existingConversation.id);
     }
     onModalClose();
   };
@@ -65,15 +66,15 @@ const StartConversationTemplate = observer((props: StartConversationProps): Reac
       />
       <div className="Template_container">
         {
-          userList?.map((user: UserDTO) => {
-            return (
+          userList?.map((user: UserDTO) =>
+            user.id !== currentUser?.id ? (
               <UserItem
                 key={`user-${user.id}`}
                 userData={user}
                 onClick={() => {handleUserClick(user.id)}}
               />
-            )
-          })
+            ) : null
+          )
         }
       </div>
     </div>

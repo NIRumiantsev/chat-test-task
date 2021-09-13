@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import {ChangeEvent, ReactComponentElement} from 'react';
 import { Checkbox as PrettyCheckbox } from 'pretty-checkbox-react';
 
 import '@djthoms/pretty-checkbox';
@@ -8,7 +8,7 @@ type CheckBoxProps = {
   onChange: (value: boolean) => void,
 }
 
-const Checkbox = (props: CheckBoxProps) => {
+const Checkbox = (props: CheckBoxProps): ReactComponentElement<'input'> => {
   const {
     value,
     onChange,

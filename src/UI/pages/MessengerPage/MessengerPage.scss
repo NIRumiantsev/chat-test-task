@@ -3,6 +3,9 @@
   justify-content: space-between;
   align-items: flex-start;
   padding-top: 45px;
+  @media screen and (max-width: 500px) {
+    padding-top: 20px;
+  }
   &_column {
     display: flex;
     flex-direction: column;

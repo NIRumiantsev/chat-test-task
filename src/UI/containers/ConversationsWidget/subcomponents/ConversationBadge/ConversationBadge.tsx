@@ -1,4 +1,4 @@
-import { ReactComponentElement, useMemo } from 'react';
+import { ReactComponentElement } from 'react';
 import moment from 'moment';
 import { Avatar } from 'UI';
 

@@ -7,7 +7,7 @@ import { WindowDimensions } from 'types';
 
 import './MessengerHeader.scss';
 
-type MessengerHeaderProps = {
+export type MessengerHeaderProps = {
   onStartConversation: () => void;
   onStartGroupChart: () => void;
 };

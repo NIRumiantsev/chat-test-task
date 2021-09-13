@@ -1,4 +1,4 @@
-import {ChangeEvent, useMemo, useState, useRef, useLayoutEffect, useEffect} from 'react';
+import { ChangeEvent, useMemo, useState, useRef, useEffect } from 'react';
 import { toJS } from 'mobx';
 import { observer } from 'mobx-react';
 import { get } from 'lodash';
@@ -8,7 +8,7 @@ import { conversationStore, userStore } from 'stores';
 import { ChatImage, SendIcon } from 'assets';
 import { getInterlocutor } from 'utils';
 import { Avatar } from 'UI';
-import { MessageDTO } from 'types';
+import {MessageDTO, UserDTO} from 'types';
 
 import './ChatWidget.scss';
 
@@ -17,6 +17,7 @@ const ChatWidget = observer( () => {
 
   const currentConversation = toJS(conversationStore).currentConversation;
   const currentUser = toJS(userStore).currentLoginUser;
+  const currentUserList = toJS(userStore).userList;
 
   const messengerRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -28,7 +29,7 @@ const ChatWidget = observer( () => {
 
   const conversationTitle = useMemo(() => {
     if (currentConversation && currentUser) {
-      if (get(currentConversation, "members.length") < 2) {
+      if (get(currentConversation, "members.length") > 2) {
         return currentConversation?.name || '';
       } else {
         return getInterlocutor(currentConversation, currentUser.id)?.name;
@@ -51,7 +52,7 @@ const ChatWidget = observer( () => {
       textarea.style.height = textareaHeight
       messages.style.paddingBottom = `calc(${textareaHeight} + 60px)`
     }
-  }
+  };
 
   const handleSendMessage = async () => {
     if (currentUser && currentConversation && newMessage.length > 0) {
@@ -65,11 +66,13 @@ const ChatWidget = observer( () => {
 
   const scrollDownMessenger = () => {
     const scrollHeight = messengerRef?.current?.scrollHeight;
-    console.log('here', scrollHeight)
     if (scrollHeight) {
       messengerRef?.current?.scrollTo(0, scrollHeight);
     }
   };
+
+  const findUserName = (userId: number) =>
+    currentUserList.find((user: UserDTO) => user.id === userId)?.name;
 
   return (
     <div className="ChatWidget">
@@ -111,7 +114,10 @@ const ChatWidget = observer( () => {
                           : {borderRadius: '0px 15px 15px 15px'}
                       }
                     >
-                      <span className="ChatWidget_timestamp">{moment(message.sent_at).format('HH:mm')}</span>
+                      <div className="ChatWidget_holder">
+                        <span className="ChatWidget_name">{findUserName(message.user_id)}</span>
+                        <span className="ChatWidget_timestamp">{moment(message.sent_at).format('HH:mm')}</span>
+                      </div>
                       <p className="ChatWidget_text">{message.text}</p>
                     </div>
                   </div>

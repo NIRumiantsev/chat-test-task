@@ -1,5 +1,5 @@
 import { ReactComponentElement } from 'react';
-import {Button, Input} from 'UI';
+import { Button } from 'UI';
 import { CloseIcon } from 'assets';
 
 import './Modal.scss';

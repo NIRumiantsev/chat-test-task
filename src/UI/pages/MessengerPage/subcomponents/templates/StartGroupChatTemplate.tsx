@@ -2,11 +2,10 @@ import {ReactComponentElement, useEffect, useState} from 'react';
 import { userStore } from 'stores';
 import { ConversationCreateDTO, UserDTO } from 'types';
 import { serviceLocator } from 'services';
-import { Button, Checkbox, Input } from 'UI/index';
+import { Button, Input } from 'UI/index';
 import { MagnifierIcon } from 'assets';
 import { UserItem } from '../';
 import { filterUsers } from '../../helpers';
-
 
 type StartGroupChatProps = {
   onModalClose: () => void,
@@ -42,9 +41,10 @@ const StartGroupChatTemplate = (props: StartGroupChatProps): ReactComponentEleme
     }
     const newConversationData: ConversationCreateDTO = {
       user_ids: selectedUsersIds,
-      name: newGroupChatName,
+      name: newGroupChatName || 'New group',
     };
     await serviceLocator.conversationService.createNewConversation(currentUser?.id, newConversationData);
+    await serviceLocator.conversationService.loadConversationList(currentUser?.id);
     onModalClose();
   };
 
@@ -66,8 +66,8 @@ const StartGroupChatTemplate = (props: StartGroupChatProps): ReactComponentEleme
       />
       <div className="Template_container--group">
         {
-          userList?.map((user: UserDTO) => {
-            return (
+          userList?.map((user: UserDTO) =>
+            user.id !== currentUser?.id ? (
               <UserItem
                 key={`user-${user.id}`}
                 userData={user}
@@ -75,8 +75,8 @@ const StartGroupChatTemplate = (props: StartGroupChatProps): ReactComponentEleme
                 checked={selectedUsersIds.includes(user.id)}
                 onCheck={(value: boolean) => {handleUserSelect(user.id, value)}}
               />
-            )
-          })
+            ) : null
+          )
         }
       </div>
       <Button

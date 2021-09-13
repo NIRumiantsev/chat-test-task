@@ -51,6 +51,7 @@ const ConversationsWidget = observer(() => {
     return (
       <div
         className="ConversationsWidget_curtain"
+        role="conversations-curtain"
         onClick={() => setMobileWidgetOpen(true)}
       >
         <img
@@ -84,11 +85,17 @@ const ConversationsWidget = observer(() => {
       />
       {
         conversationList.length === 0 || !currentUser ? (
-          <div className="ConversationsWidget_snackbar">
+          <div
+            role="conversation-snackbar"
+            className="ConversationsWidget_snackbar"
+          >
             Your chats will be displayed here
           </div>
         ) : (
-          <div className="ConversationsWidget_container">
+          <div
+            role="conversation-badges"
+            className="ConversationsWidget_container"
+          >
             {conversationList.map((conversation: ConversationDTO) =>(
               <ConversationBadge
                 key={conversation.id}

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ReactComponentElement, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Input, Button } from 'UI';
 import { serviceLocator } from 'services';
@@ -17,7 +17,7 @@ const defaultFormState: FormState = {
 
 const formFields: Array<keyof FormState> = ['login', 'password'];
 
-const LoginForm = () => {
+const LoginForm = (): ReactComponentElement<'form'> => {
   const history = useHistory();
 
   const [formState, setFormState] = useState<FormState>(defaultFormState);

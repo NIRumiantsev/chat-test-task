@@ -1,0 +1,129 @@
+.ChatWidget {
+  background: #EBEEFF;
+  border-radius: 15px;
+  width: 100%;
+  height: calc(100vh - 160px);
+  padding: 5px;
+  overflow: hidden;
+  position: relative;
+  @media screen and (max-width: 1080px) {
+    width: 100%;
+  }
+  &_messenger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+  }
+  &_image {
+    position: absolute;
+    width: 530px;
+    height: 360px;
+    margin: -180px -265px;
+    top: 50%;
+    left: 50%;
+    @media screen and (max-width: 500px) {
+      width: 260px;
+      height: 180px;
+      margin: -90px -130px;
+    }
+  }
+  &_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 10px);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(4px);
+    padding: 10px;
+    border-radius: 10px;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+  }
+  &_title {
+    margin: 0 0 0 10px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color: #171325;
+    text-transform: capitalize;
+  }
+  &_timestamp {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color: #807996;
+  }
+  &_name {
+    @extend .ChatWidget_timestamp;
+    margin-right: 10px;
+    text-transform: capitalize;
+  }
+  &_holder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &_messages {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 70px 0 70px;
+  }
+  &_message {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  &_text {
+    margin: 10px 0 0;
+    font-size: 12px;
+    line-height: 20px;
+    color: #171325;
+    width: 100%;
+    text-align: start;
+    word-wrap: break-word;
+  }
+  &_balloon {
+    background: #FFFFFF;
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    max-width: 220px;
+  }
+  &_container {
+    background: #FFFFFF;
+    width: calc(100% - 10px);
+    border-radius: 10px;
+    min-height: 60px;
+    max-height: 50%;
+    display: flex;
+    padding: 15px 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+  }
+  &_textarea {
+    width: 100%;
+    max-height: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  &_send {
+    cursor: pointer;
+  }
+}

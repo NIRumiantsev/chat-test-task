@@ -1,0 +1,10 @@
+.Template {
+  &_container {
+    max-height: 320px;
+    overflow-y: auto;
+    &--group {
+      @extend .Template_container;
+      margin-bottom: 20px;
+    }
+  }
+}

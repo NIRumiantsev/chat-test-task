@@ -1,0 +1,38 @@
+.Input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  &_title {
+    text-transform: capitalize;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 10px;
+  }
+  &_icon {
+    position: absolute;
+    top: 6px;
+    left: 10px;
+  }
+  &_field {
+    width: 100%;
+    min-height: 35px;
+    background: transparent;
+    border: 1px solid #C0BBDB;
+    border-radius: 17px;
+    outline: none;
+    padding: 0 10px;
+    font-size: 16px;
+    line-height: 20px;
+    &::placeholder {
+      color: #807996;;
+    }
+    &--withIcon {
+      @extend .Input_field;
+      padding-left: 38px;
+    }
+  }
+}

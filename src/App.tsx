@@ -1,11 +1,34 @@
-import React from 'react';
+import {ReactComponentElement, useEffect} from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
+import { appRoutes } from './routes';
+import { serviceLocator } from './services';
+
 import './App.scss';
 
-function App() {
+const App = (): ReactComponentElement<'div'> => {
+  useEffect(() => {
+    loadUsersList();
+  }, []);
+
+  const loadUsersList = async () => {
+    await serviceLocator.userService.loadUserList();
+  };
+
   return (
-    <div className="App">
-      Hello
-    </div>
+    <Router>
+      <div className="App">
+        <div className="App_container">
+          <Switch>
+            {appRoutes}
+            <Redirect to={'/'}/>
+          </Switch>
+        </div>
+      </div>
+    </Router>
   );
 }
 

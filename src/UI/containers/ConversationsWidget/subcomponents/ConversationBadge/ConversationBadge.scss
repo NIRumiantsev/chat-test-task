@@ -1,0 +1,52 @@
+.ConversationBadge {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 15px rgba(167, 170, 240, 0.2);
+  backdrop-filter: blur(4px);
+  border-radius: 15px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  cursor: pointer;
+  &:not(nth-last-child) {
+    margin-bottom: 15px;
+  }
+  &_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 180px;
+  }
+  &_holder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  &_title {
+    text-transform: capitalize;
+    margin: 0;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+  }
+  &_timestamp {
+    background: #E9EDFF;
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 14px;
+    color: #807996;
+    padding: 2px 5px;
+  }
+  &_text {
+    margin: 8px 0 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #807996;
+    width: 180px;
+    overflow: hidden;
+    height: auto;
+    text-align: left;
+  }
+}

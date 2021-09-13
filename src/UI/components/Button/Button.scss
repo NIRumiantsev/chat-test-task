@@ -1,0 +1,47 @@
+.Button {
+  height: 45px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 25px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &--primary {
+    @extend .Button;
+    background: #3E2FED;
+    color: #FFFFFF;
+    &:hover {
+      background: #3e32bf;
+    }
+  }
+  &--transparent {
+    @extend .Button;
+    background: transparent;
+    color: #3E2FED;
+    border: 1px solid #3E2FED;
+    &:hover {
+      color: #3e32bf;
+      border: 1px solid #3e32bf;
+    }
+  }
+  &--warning {
+    @extend .Button;
+    background: #FFCD4C;
+    color: #FFFFFF;
+    &:hover {
+      background: #e2b34a;;
+    }
+  }
+  &--system {
+    @extend .Button;
+    background: #EBEEFF;
+    color: #3e32bf;
+  }
+  &_icon {
+    margin-right: 10px;
+  }
+}

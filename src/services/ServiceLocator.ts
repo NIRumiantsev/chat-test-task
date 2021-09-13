@@ -1,15 +1,19 @@
 import {
-  userStore
+  userStore,
+  conversationStore,
 } from 'stores';
 import {
-  UserService
+  UserService,
+  ConversationService,
 } from 'services';
 
 class ServiceLocator {
-  public coursesService: UserService;
+  public userService: UserService;
+  public conversationService: ConversationService;
 
   constructor() {
-    this.coursesService = new UserService(this, userStore);
+    this.userService = new UserService(this, userStore);
+    this.conversationService = new ConversationService(this, conversationStore);
   }
 }
 

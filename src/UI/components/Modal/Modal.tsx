@@ -4,7 +4,7 @@ import { CloseIcon } from 'assets';
 
 import './Modal.scss';
 
-type ModalProps = {
+export type ModalProps = {
   title: string,
   content: ReactComponentElement<'div'> | string,
   onClose: () => void,
@@ -23,10 +23,18 @@ const Modal = (props: ModalProps): ReactComponentElement<'div'> => {
         className="Modal_mask"
         onClick={onClose}
       />
-      <div className="Modal_window">
+      <div
+        role="modal-window"
+        className="Modal_window"
+      >
         <div className="Modal_header">
           <div className="Modal_holder">
-            <h2 className="Modal_title">{title}</h2>
+            <h2
+              role="modal-title"
+              className="Modal_title"
+            >
+              {title}
+            </h2>
             <Button
               type="system"
               width="45px"

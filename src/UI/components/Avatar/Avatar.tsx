@@ -3,7 +3,7 @@ import { avatarColors } from './mock';
 
 import './Avatar.scss';
 
-type AvatarProps = {
+export type AvatarProps = {
   content: string;
   currentId: number;
   size?: 'l' | 'm';
@@ -30,6 +30,7 @@ const Avatar = (props: AvatarProps): ReactComponentElement<'div'> => {
 
   return (
     <div
+      role="avatar"
       className={`Avatar--${size}`}
       style={{background: getUserColor()}}
     >

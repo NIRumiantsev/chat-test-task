@@ -3,7 +3,7 @@ import { Checkbox as PrettyCheckbox } from 'pretty-checkbox-react';
 
 import '@djthoms/pretty-checkbox';
 
-type CheckBoxProps = {
+export type CheckBoxProps = {
   value: boolean,
   onChange: (value: boolean) => void,
 }
@@ -16,6 +16,7 @@ const Checkbox = (props: CheckBoxProps): ReactComponentElement<'input'> => {
 
   return (
     <PrettyCheckbox
+      role="checkbox"
       color="primary"
       variant="thick"
       shape="curve"

@@ -2,8 +2,8 @@ import { ChangeEvent, ReactComponentElement } from 'react';
 
 import './Input.scss';
 
-type TextareaProps = {
-  type: "text" | "number" | "textarea",
+export type InputProps = {
+  type: "text" | "number",
   value: string,
   onChange: (name:string, value: string) => void;
   name?: string,
@@ -14,7 +14,7 @@ type TextareaProps = {
   withoutBorder?: boolean
 };
 
-const Input = (props: TextareaProps): ReactComponentElement<'div'> => {
+const Input = (props: InputProps): ReactComponentElement<'div'> => {
   const {
     type,
     value,
@@ -30,7 +30,12 @@ const Input = (props: TextareaProps): ReactComponentElement<'div'> => {
   return (
     <div className="Input">
       {!!title && (
-        <span className="Input_title">{title}</span>
+        <span
+          role="input-title"
+          className="Input_title"
+        >
+          {title}
+        </span>
       )}
       {withIcon && (
         <img
@@ -40,6 +45,7 @@ const Input = (props: TextareaProps): ReactComponentElement<'div'> => {
         />
       )}
       <input
+        role="input-field"
         className={`Input_field${withIcon ? '--withIcon' : ''}`}
         style={withoutBorder ? {border: 'none'} : {}}
         type={type}

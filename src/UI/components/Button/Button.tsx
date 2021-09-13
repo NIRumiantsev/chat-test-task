@@ -2,10 +2,13 @@ import {MouseEvent, ReactComponentElement} from 'react';
 
 import './Button.scss';
 
-type ButtonProps = {
+export const buttonPropType = ['primary', 'transparent', 'warning', 'system'] as const;
+type ButtonPropType = typeof buttonPropType[number];
+
+export type ButtonProps = {
   onClick: () => void,
   content?: string,
-  type?: 'primary' | 'transparent' | 'warning' | 'system',
+  type?: ButtonPropType,
   width?: string,
   withIcon?: boolean,
   icon?: string
@@ -23,6 +26,7 @@ const Button = (props: ButtonProps): ReactComponentElement<'button'> => {
 
   return (
     <button
+      role="button"
       className={`Button--${type}`}
       style={{
         width: width,
@@ -35,6 +39,7 @@ const Button = (props: ButtonProps): ReactComponentElement<'button'> => {
     >
       {withIcon && (
         <img
+          role="button-icon"
           style={{
             marginRight: content.length > 0 ? '10px' : 0,
           }}
